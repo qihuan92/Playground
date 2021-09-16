@@ -8,7 +8,11 @@ package io.github.qihuan92.handler;
  */
 public class Looper {
     private static final ThreadLocal<Looper> sThreadLocal = new ThreadLocal<>();
-    MessageQueue mQueue;
+    final MessageQueue mQueue;
+
+    public Looper() {
+        this.mQueue = new MessageQueue();
+    }
 
     public static void prepare() {
         if (sThreadLocal.get() != null) {

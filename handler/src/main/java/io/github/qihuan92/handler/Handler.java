@@ -1,7 +1,5 @@
 package io.github.qihuan92.handler;
 
-import com.sun.istack.internal.NotNull;
-
 /**
  * This is a fake Android Handler
  *
@@ -11,15 +9,16 @@ import com.sun.istack.internal.NotNull;
 public class Handler {
 
     public interface Callback {
-        boolean handleMessage(@NotNull Message msg);
+        boolean handleMessage(Message msg);
     }
 
-    private final Callback mCallback;
+    private Callback mCallback;
     private final Looper mLooper;
     private final MessageQueue mQueue;
 
     public Handler() {
-        this(null);
+        mLooper = Looper.myLooper();
+        mQueue = mLooper.mQueue;
     }
 
     public Handler(Looper looper) {
