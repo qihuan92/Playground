@@ -18,4 +18,8 @@ public abstract class Observable<T> implements ObservableSource<T> {
     public static <T> Observable<T> create(ObservableOnSubscribe<T> source) {
         return new ObservableCreate<>(source);
     }
+
+    public final <U> Observable<U> map(Function<T, U> mapper) {
+        return new ObservableMap<>(this, mapper);
+    }
 }

@@ -12,6 +12,11 @@ public class ExampleUnitTest {
                 emitter.onNext("Test!!!");
                 emitter.onComplete();
             }
+        }).map(new Function<String, String>() {
+            @Override
+            public String apply(String s) {
+                return "Map " + s;
+            }
         }).subscribeObserver(new Observer<String>() {
             @Override
             public void onSubscribe() {
