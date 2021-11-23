@@ -10,3 +10,4 @@ rootProject.name = "Playground"
 include ':app'
 include ':handler'
 include ':retrofit'
+include ':rxjava'
