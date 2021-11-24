@@ -9,7 +9,9 @@ public class ExampleUnitTest {
         Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void onSubscribe(Emitter<String> emitter) {
-                emitter.onNext("Test!!!");
+                emitter.onNext("Test0!!!");
+                emitter.onNext("Test1!!!");
+                emitter.onNext("Test2!!!");
                 emitter.onComplete();
             }
         }).map(new Function<String, String>() {
@@ -17,7 +19,12 @@ public class ExampleUnitTest {
             public String apply(String s) {
                 return "Map " + s;
             }
-        }).subscribeObserver(new Observer<String>() {
+        }).map(new Function<String, String>() {
+            @Override
+            public String apply(String s) {
+                return "Map2 " + s;
+            }
+        }).subscribe(new Observer<String>() {
             @Override
             public void onSubscribe() {
                 System.out.println("onSubscribe()");

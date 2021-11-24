@@ -9,7 +9,7 @@ package io.github.qihuan92.rxjava;
 public abstract class Observable<T> implements ObservableSource<T> {
 
     @Override
-    public void subscribeObserver(Observer<T> observer) {
+    public void subscribe(Observer<T> observer) {
         subscribeActual(observer);
     }
 
